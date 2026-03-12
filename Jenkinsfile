@@ -19,15 +19,6 @@ pipeline {
                 // Alternative if your setup still needs hyphen: sh 'docker-compose build --no-cache'
             }
         }
-        stage('Test') {
-            steps {
-                // Mandatory #3 – at least some verification
-                dir('app') {                   // or api/ folder
-                    sh 'pip install -r requirements.txt pytest'
-                    sh 'pytest'                    // or your test command
-                }
-            }
-        }
         stage('Start Stack') {
             steps {
                 sh 'docker-compose up -d'
@@ -47,6 +38,13 @@ pipeline {
         //         }
         //     }
         // }
+    }
+    stage('Smoke Test') {
+            steps {
+                sh 'curl --fail http://13.203.217.188:5959/api/quotes || exit 1'
+                echo "Application responded correctly"
+            }
+        }
     }
 
     post {

@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build Images') {
             steps {
-                sh 'docker compose build --no-cache'   // clean build in CI
+                sh 'docker compose build'   // clean build in CI
                 // Alternative if your setup still needs hyphen: sh 'docker-compose build --no-cache'
             }
         }

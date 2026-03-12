@@ -44,7 +44,7 @@ pipeline {
                 echo "Application responded correctly"
             }
         }
-
+    }
     post {
         always {
             // Clean up – very important on Jenkins agents to free ports/disk
@@ -61,7 +61,6 @@ pipeline {
         failure {
             echo "Pipeline failed – check logs for build/startup issues"
         }
-    }
     }
 }
 

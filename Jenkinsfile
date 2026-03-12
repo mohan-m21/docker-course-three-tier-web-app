@@ -15,14 +15,14 @@ pipeline {
 
         stage('Build Images') {
             steps {
-                sh 'docker compose build'   // clean build in CI
+                sh 'docker-compose build'   // clean build in CI
                 // Alternative if your setup still needs hyphen: sh 'docker-compose build --no-cache'
             }
         }
 
         stage('Start Stack') {
             steps {
-                sh 'docker compose up -d'
+                sh 'docker-compose up -d'
                 sleep time: 45, unit: 'SECONDS'   // Give MySQL + Flask time to initialize
             }
         }

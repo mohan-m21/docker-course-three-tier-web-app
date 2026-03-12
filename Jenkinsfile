@@ -19,7 +19,15 @@ pipeline {
                 // Alternative if your setup still needs hyphen: sh 'docker-compose build --no-cache'
             }
         }
-
+        stage('Test') {
+            steps {
+                // Mandatory #3 – at least some verification
+                dir('app') {                   // or api/ folder
+                    sh 'pip install -r requirements.txt pytest'
+                    sh 'pytest'                    // or your test command
+                }
+            }
+        }
         stage('Start Stack') {
             steps {
                 sh 'docker-compose up -d'

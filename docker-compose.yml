@@ -70,7 +70,7 @@ services:
       - api
     ports:
       # - "80:5000" # for beanstalk
-      - "5002:5002"
+      - "5959:5002"
 
 volumes:
   db-data:

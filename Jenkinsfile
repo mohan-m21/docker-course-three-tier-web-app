@@ -38,14 +38,12 @@ pipeline {
         //         }
         //     }
         // }
-    }
     stage('Smoke Test') {
             steps {
                 sh 'curl --fail http://13.203.217.188:5959/api/quotes || exit 1'
                 echo "Application responded correctly"
             }
         }
-    }
 
     post {
         always {
@@ -64,4 +62,5 @@ pipeline {
             echo "Pipeline failed – check logs for build/startup issues"
         }
     }
+}
 }

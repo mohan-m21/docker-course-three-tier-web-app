@@ -62,5 +62,6 @@ pipeline {
             echo "Pipeline failed – check logs for build/startup issues"
         }
     }
+    }
 }
-}
+
